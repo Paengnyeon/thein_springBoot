@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class BoardService {
-	// DB사용하기 위한 준비
+
 	private final BoardRepository boardRepository;
 
 	public void save(BoardDTO dto) {
@@ -20,8 +20,19 @@ public class BoardService {
 	}
 
 	public List<BoardDTO> findAll() {
-		// TODO Auto-generated method stub
 		return boardRepository.findAll();
+	}
+
+	public BoardDTO findById(Long id) {
+		return boardRepository.findById(id);
+	}
+
+	public void update(BoardDTO boardDTO) {
+		boardRepository.update(boardDTO);
+	}
+
+	public void delete(Long id) {
+		boardRepository.delete(id);
 	}
 
 }

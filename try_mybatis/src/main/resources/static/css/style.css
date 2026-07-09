@@ -1,0 +1,7 @@
+body {
+	font-family: Arial, sans-serif;
+}
+
+a, button, input[type="submit"], input[type="button"] {
+	cursor: pointer;
+}

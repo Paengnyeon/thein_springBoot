@@ -15,14 +15,6 @@ public class BoardRepository {
 
 	private final SqlSessionTemplate sql;
 
-	/*
-	 * "Board.save" <mapper namespace="Board"> 참고 <insert id="save" 참고
-	 */
-
-	/*
-	 * parameterType="board" <typeAlias type="com.example.demo.dto.BoardDTO"
-	 * alias="board"> 참고
-	 */
 	public BoardDTO save(BoardDTO dto) {
 		sql.insert("Board.save", dto);
 		return dto;
@@ -30,6 +22,18 @@ public class BoardRepository {
 
 	public List<BoardDTO> findAll() {
 		return sql.selectList("Board.findAll");
+	}
+
+	public BoardDTO findById(Long id) {
+		return sql.selectOne("Board.findById", id);
+	}
+
+	public void update(BoardDTO boardDTO) {
+		sql.update("Board.update", boardDTO);
+	}
+
+	public void delete(Long id) {
+		sql.delete("Board.delete", id);
 	}
 
 }

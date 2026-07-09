@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+	<meta charset="UTF-8">
+	<title>게시판 내용 보기</title>
+	<link rel="stylesheet" href="/css/style.css" />
+	<style>
+		table, tr, td, th {
+			border: 1px solid black;
+			border-collapse: collapse;
+		}
+		th, td {
+			padding: 10px;
+		}
+	</style>
+</head>
+<body>
+	<table>
+		<tr>
+			<th>id</th>
+			<td th:text="${board.id}"></td>
+		</tr>
+		<tr>
+			<th>title</th>
+			<td th:text="${board.title}"></td>
+		</tr>
+		<tr>
+			<th>writer</th>
+			<td th:text="${board.writer}"></td>
+		</tr>
+		<tr>
+			<th>contents</th>
+			<td th:text="${board.contents}"></td>
+		</tr>
+	</table>
+	<button onclick="location.href='/list'">목록</button>
+	<button th:onclick="|location.href='@{/update/{id}(id=${board.id})}'|">수정</button>
+	<button th:onclick="|location.href='@{/delete/{id}(id=${board.id})}'|">삭제</button>
+</body>
+</html>
