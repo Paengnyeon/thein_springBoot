@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="ko" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>THEIN FITNESS</title>
+    <link rel="stylesheet" href="/css/gym.css">
+</head>
+<body>
+    <header class="topbar">
+        <a class="brand" href="/home">THEIN 헬스장 회원관리</a>
+        <nav class="nav">
+            <a href="#home">홈</a>
+            <a href="#trainers">트레이너 조회</a>
+            <a href="#memberships">헬스장 이용권</a>
+            <a href="#join">로그인</a>
+            <a href="#join">회원가입</a>
+        </nav>
+    </header>
+
+    <section id="home" class="hero">
+        <div>
+            <p>살기 위한 유연성 건강을 지키세요</p>
+            <h1>
+                오늘의 운동이<br>
+                내일의 나를 더 힘들게합니다.
+            </h1>
+            <a class="btn btn-success" href="#join">지금 해보실래요?</a>
+        </div>
+    </section>
+
+    <main class="container">
+        <section id="memberships">
+            <h2>헬스장 이용권</h2>
+            <div class="plan-grid">
+                <article class="plan-card" th:each="plan : ${plans}">
+                    <h3 th:text="${plan.name}">1개월 이용권</h3>
+                    <strong th:text="${plan.price}">80,000원</strong>
+                    <p th:text="${plan.desc}">헬스장 자유 이용</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="trainers">
+            <h2>전문 트레이너</h2>
+            <div class="trainer-grid">
+                <article class="trainer-card" th:each="trainer : ${trainers}">
+                    <span class="avatar" th:text="${#strings.substring(trainer.name, 0, 1)}">김</span>
+                    <h3 th:text="${trainer.name}">김트레이너</h3>
+                    <b th:text="${trainer.specialty}">근력 운동</b>
+                    <p th:text="${trainer.intro}">회원님의 맞춤 운동을 지도합니다.</p>
+                </article>
+            </div>
+        </section>
+
+        <section id="join" class="join-box">
+            <h2>회원 안내</h2>
+            <p>회원가입과 로그인 기능은 다음 단계에서 Controller, Service, DAO, DTO를 추가해서 연결합니다.</p>
+        </section>
+    </main>
+
+    <footer class="footer">THEIN FITNESS </footer>
+</body>
+</html>
